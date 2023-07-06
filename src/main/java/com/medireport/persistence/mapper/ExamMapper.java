@@ -2,10 +2,7 @@ package com.medireport.persistence.mapper;
 
 import com.medireport.domain.Exam;
 import com.medireport.persistence.entity.Examen;
-import org.mapstruct.InheritConfiguration;
-import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-import org.mapstruct.Mappings;
+import org.mapstruct.*;
 
 import java.util.List;
 
@@ -19,8 +16,8 @@ public interface ExamMapper {
     })
     Exam toExam(Examen examen);
 
-    List<Exam> toExams(List<Examen> exams);
+    List<Exam> toExams(List<Examen> examenes);
 
-    @InheritConfiguration
+    @InheritInverseConfiguration
     Examen toExamen(Exam exam);
 }

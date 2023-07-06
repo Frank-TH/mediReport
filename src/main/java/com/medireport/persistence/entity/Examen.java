@@ -1,7 +1,6 @@
 package com.medireport.persistence.entity;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Table(name = "examenes")

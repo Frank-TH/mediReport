@@ -11,4 +11,6 @@ public interface ExamRepository {
     List<Exam> getAll();
     Optional<Exam> getExam(int examId);
     Exam save(Exam exam);
+
+    void delete (int examId);
 }
