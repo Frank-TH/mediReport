@@ -2,8 +2,6 @@ package com.medireport.persistence.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import java.util.List;
 
 @Entity
 public class Supervisor {
@@ -12,8 +10,6 @@ public class Supervisor {
     private String dni;
     private String nombre;
 
-    @OneToMany(mappedBy = "supervisor")
-    private List<Atencion> atenciones;
 
     public String getDni() {
         return dni;
@@ -31,11 +27,4 @@ public class Supervisor {
         this.nombre = nombre;
     }
 
-    public List<Atencion> getAtenciones() {
-        return atenciones;
-    }
-
-    public void setAtenciones(List<Atencion> atenciones) {
-        this.atenciones = atenciones;
-    }
 }

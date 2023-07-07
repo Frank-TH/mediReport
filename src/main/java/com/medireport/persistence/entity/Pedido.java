@@ -2,7 +2,6 @@ package com.medireport.persistence.entity;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -13,20 +12,30 @@ public class Pedido {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @ManyToOne
-    @JoinColumn(name = "id_asesor", insertable = false, updatable = false )
-    private Asesor asesor;
-    @ManyToOne
-    @JoinColumn(name = "id_paciente", insertable = false, updatable = false )
-    private Paciente paciente;
+
+    @Column(name = "id_paciente")
+    private String pacienteId;
 
 
-    @OneToMany(mappedBy = "pedido")
-    private List<Detalle> examenes;
+    @Column(name = "id_asesor")
+    private String asesorId;
 
-    private Integer cantidad;
 
     private LocalDateTime fecha;
+
+    //RELACION DE UNO A MUCHOS CON LA TABLA DETALLE, OBTENIENDO LA LISTA DE EXAMENES DEL PEDIDO
+    @OneToMany(mappedBy = "pedido", cascade = {CascadeType.ALL})
+    private List<Detalle> examenes;
+
+    //RELACION DE MUCHOS A UNO CON LA TABLA ASESORES
+    @ManyToOne
+    @JoinColumn(name = "id_asesor", insertable = false, updatable = false)
+    private Asesor asesor;
+
+    //RELACION DE MUCHOS A UNO CON LA TABLA PACIENTES
+    @ManyToOne
+    @JoinColumn(name = "id_paciente", insertable = false, updatable = false)
+    private Paciente paciente;
 
 
     public Integer getId() {
@@ -37,12 +46,20 @@ public class Pedido {
         this.id = id;
     }
 
-    public Integer getCantidad() {
-        return cantidad;
+    public String getPacienteId() {
+        return pacienteId;
     }
 
-    public void setCantidad(Integer cantidad) {
-        this.cantidad = cantidad;
+    public void setPacienteId(String pacienteId) {
+        this.pacienteId = pacienteId;
+    }
+
+    public String getAsesorId() {
+        return asesorId;
+    }
+
+    public void setAsesorId(String asesorId) {
+        this.asesorId = asesorId;
     }
 
     public LocalDateTime getFecha() {
@@ -51,5 +68,13 @@ public class Pedido {
 
     public void setFecha(LocalDateTime fecha) {
         this.fecha = fecha;
+    }
+
+    public List<Detalle> getExamenes() {
+        return examenes;
+    }
+
+    public void setExamenes(List<Detalle> examenes) {
+        this.examenes = examenes;
     }
 }

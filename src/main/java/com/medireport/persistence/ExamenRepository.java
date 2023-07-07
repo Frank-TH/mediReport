@@ -38,8 +38,8 @@ public class ExamenRepository implements ExamRepository {
     }
 
     @Override
-    public void delete(int examId){
-        examenCrudRepository.deleteById(examId);
+    public void delete(int idProducto){
+        examenCrudRepository.deleteById(idProducto);
     }
 
 

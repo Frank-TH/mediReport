@@ -1,26 +1,29 @@
 package com.medireport.persistence.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import java.io.Serializable;
 
 @Embeddable
 public class DetallePK implements Serializable {
-    private Integer id_pedido;
-    private Integer id_examen;
+    @Column(name = "id_pedido")
+    private Integer pedidoId;
+    @Column(name = "id_examen")
+    private Integer examenId;
 
-    public Integer getId_pedido() {
-        return id_pedido;
+    public Integer getPedidoId() {
+        return pedidoId;
     }
 
-    public void setId_pedido(Integer id_pedido) {
-        this.id_pedido = id_pedido;
+    public void setPedidoId(Integer pedidoId) {
+        this.pedidoId = pedidoId;
     }
 
-    public Integer getId_examen() {
-        return id_examen;
+    public Integer getExamenId() {
+        return examenId;
     }
 
-    public void setId_examen(Integer id_examen) {
-        this.id_examen = id_examen;
+    public void setExamenId(Integer examenId) {
+        this.examenId = examenId;
     }
 }
