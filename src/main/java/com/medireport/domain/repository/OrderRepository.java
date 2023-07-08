@@ -1,6 +1,5 @@
 package com.medireport.domain.repository;
 
-import com.medireport.domain.Exam;
 import com.medireport.domain.Order;
 
 import java.util.List;

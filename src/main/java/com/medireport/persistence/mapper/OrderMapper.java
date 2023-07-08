@@ -9,12 +9,12 @@ import org.mapstruct.Mappings;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring", uses = {DetailMapper.class, AdviserMapper.class, PatientMapper.class})
+@Mapper(componentModel = "spring", uses = {DetailMapper.class})
 public interface OrderMapper {
     @Mappings({
-            @Mapping(source = "id", target = "orderId"),
-            @Mapping(source = "pacienteId",target = "patientId"),
-            @Mapping(source = "asesorId",target = "adviserId"),
+            @Mapping(source = "idPedido", target = "orderId"),
+            @Mapping(source = "idAsesor", target = "adviser"),
+            @Mapping(source = "idPaciente", target = "patient"),
             @Mapping(source = "fecha", target = "date"),
             @Mapping(source = "examenes", target = "exams")
     })
@@ -24,8 +24,8 @@ public interface OrderMapper {
 
     @InheritInverseConfiguration
     @Mappings({
-            @Mapping(target = "asesor",ignore = true),
-            @Mapping(target = "paciente",ignore = true)
+            @Mapping(target = "asesor", ignore = true),
+            @Mapping(target = "paciente", ignore = true)
     })
     Pedido toPedido(Order order);
 

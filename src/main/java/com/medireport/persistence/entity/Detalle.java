@@ -12,7 +12,7 @@ public class Detalle {
     private String comentario;
 
     @ManyToOne
-    @MapsId("id")
+    @MapsId("idPedido")
     @JoinColumn(name = "id_pedido", insertable = false, updatable = false)
     private Pedido pedido;
 

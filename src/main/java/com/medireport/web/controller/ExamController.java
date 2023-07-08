@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/Exams")
+@RequestMapping("/exams")
 public class ExamController {
     @Autowired
     private ExamService examService;

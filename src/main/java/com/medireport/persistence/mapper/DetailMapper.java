@@ -20,7 +20,7 @@ public interface DetailMapper {
     @Mappings({
             @Mapping(target = "pedido", ignore = true),
             @Mapping(target = "examen", ignore = true),
-            @Mapping(target = "id.pedidoId", ignore = true)
+            @Mapping(target = "idPedido.pedidoId", ignore = true)
     })
     Detalle toDetalle(Detail detail);
 

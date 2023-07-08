@@ -7,59 +7,53 @@ import java.util.List;
 @Entity
 @Table(name = "pedidos")
 public class Pedido {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-
-
-    @Column(name = "id_paciente")
-    private String pacienteId;
-
+    @Column(name = "id")
+    private Integer idPedido;
 
     @Column(name = "id_asesor")
-    private String asesorId;
+    private String idAsesor;
 
-
+    @Column(name = "id_paciente")
+    private String idPaciente;
     private LocalDateTime fecha;
 
-    //RELACION DE UNO A MUCHOS CON LA TABLA DETALLE, OBTENIENDO LA LISTA DE EXAMENES DEL PEDIDO
-    @OneToMany(mappedBy = "pedido", cascade = {CascadeType.ALL})
-    private List<Detalle> examenes;
-
-    //RELACION DE MUCHOS A UNO CON LA TABLA ASESORES
     @ManyToOne
     @JoinColumn(name = "id_asesor", insertable = false, updatable = false)
     private Asesor asesor;
 
-    //RELACION DE MUCHOS A UNO CON LA TABLA PACIENTES
+
     @ManyToOne
     @JoinColumn(name = "id_paciente", insertable = false, updatable = false)
     private Paciente paciente;
 
 
-    public Integer getId() {
-        return id;
+    @OneToMany(mappedBy = "pedido", cascade = {CascadeType.ALL})
+    private List<Detalle> examenes;
+
+    public Integer getIdPedido() {
+        return idPedido;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setIdPedido(Integer idPedido) {
+        this.idPedido = idPedido;
     }
 
-    public String getPacienteId() {
-        return pacienteId;
+    public String getIdAsesor() {
+        return idAsesor;
     }
 
-    public void setPacienteId(String pacienteId) {
-        this.pacienteId = pacienteId;
+    public void setIdAsesor(String idAsesor) {
+        this.idAsesor = idAsesor;
     }
 
-    public String getAsesorId() {
-        return asesorId;
+    public String getIdPaciente() {
+        return idPaciente;
     }
 
-    public void setAsesorId(String asesorId) {
-        this.asesorId = asesorId;
+    public void setIdPaciente(String idPaciente) {
+        this.idPaciente = idPaciente;
     }
 
     public LocalDateTime getFecha() {
@@ -68,6 +62,22 @@ public class Pedido {
 
     public void setFecha(LocalDateTime fecha) {
         this.fecha = fecha;
+    }
+
+    public Asesor getAsesor() {
+        return asesor;
+    }
+
+    public void setAsesor(Asesor asesor) {
+        this.asesor = asesor;
+    }
+
+    public Paciente getPaciente() {
+        return paciente;
+    }
+
+    public void setPaciente(Paciente paciente) {
+        this.paciente = paciente;
     }
 
     public List<Detalle> getExamenes() {

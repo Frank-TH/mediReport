@@ -7,14 +7,18 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
 
+import java.util.List;
+
 @Mapper(componentModel = "spring")
 public interface PatientMapper {
     @Mappings({
-            @Mapping(source = "dni",target = "patientId"),
-            @Mapping(source = "nombre",target = "name"),
-            @Mapping(source = "clave",target = "password")
+            @Mapping(source = "dni", target = "patientId"),
+            @Mapping(source = "nombre", target = "name"),
+            @Mapping(source = "clave", target = "password")
     })
     Patient toPatient(Paciente paciente);
+
+    List<Patient> toPatients(List<Paciente> pacientes);
 
     @InheritInverseConfiguration
     @Mapping(target = "pedidos", ignore = true)

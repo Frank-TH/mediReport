@@ -7,8 +7,8 @@ import java.util.List;
 public class Order {
 
     private int orderId;
-    private String patientId;
-    private String adviserId;
+    private String patient;
+    private String adviser;
     private LocalDateTime date;
     private List<Detail> exams;
 
@@ -21,19 +21,19 @@ public class Order {
     }
 
     public String getPatient() {
-        return patientId;
+        return patient;
     }
 
     public void setPatient(String patient) {
-        this.patientId = patient;
+        this.patient = patient;
     }
 
     public String getAdviser() {
-        return adviserId;
+        return adviser;
     }
 
     public void setAdviser(String adviser) {
-        this.adviserId = adviser;
+        this.adviser = adviser;
     }
 
     public LocalDateTime getDate() {

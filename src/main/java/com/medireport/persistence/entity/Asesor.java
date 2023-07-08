@@ -41,5 +41,12 @@ public class Asesor {
     public void setClave(String clave) {
         this.clave = clave;
     }
-    
+
+    public List<Pedido> getPedidos() {
+        return pedidos;
+    }
+
+    public void setPedidos(List<Pedido> pedidos) {
+        this.pedidos = pedidos;
+    }
 }

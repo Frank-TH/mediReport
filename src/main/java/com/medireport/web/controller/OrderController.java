@@ -23,7 +23,7 @@ public class OrderController {
 
     }
 
-    @GetMapping("/id")
+    @GetMapping("/{id}")
     public ResponseEntity<Order> getOrder(@PathVariable("id") int orderId) {
         return orderService.getOrder(orderId)
                 .map(order -> new ResponseEntity<>(order, HttpStatus.OK)).orElse(

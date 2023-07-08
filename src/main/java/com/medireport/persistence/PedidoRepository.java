@@ -27,15 +27,20 @@ public class PedidoRepository implements OrderRepository {
     }
 
     @Override
+    public Optional<Order> getOrder(int orderId) {
+        return pedidoCrudRepository.findById(orderId).map(pedido -> mapper.toOrder(pedido));
+    }
+
+    @Override
     public Optional<List<Order>> getByPatient(String patientId) {
-        return pedidoCrudRepository.findByIdPaciente(patientId)
-                .map(pedidos -> mapper.toOrder(pedidos));
+        List<Pedido> pedidos = pedidoCrudRepository.findByIdPaciente(patientId);
+        return Optional.of(mapper.toOrder(pedidos));
     }
 
     @Override
     public Optional<List<Order>> getByAdviser(String adviserId) {
-        return pedidoCrudRepository.findByIdAsesor(adviserId)
-                .map(pedidos -> mapper.toOrder(pedidos));
+        List<Pedido> pedidos = pedidoCrudRepository.findByIdAsesor(adviserId);
+        return Optional.of(mapper.toOrder(pedidos));
     }
 
     @Override
@@ -43,11 +48,6 @@ public class PedidoRepository implements OrderRepository {
         Pedido pedido = mapper.toPedido(order);
         pedido.getExamenes().forEach(examen -> examen.setPedido(pedido));
         return mapper.toOrder(pedidoCrudRepository.save(pedido));
-    }
-
-    @Override
-    public Optional<Order> getOrder(int orderId) {
-        return pedidoCrudRepository.findById(orderId).map(pedido -> mapper.toOrder(pedido));
     }
 
 }

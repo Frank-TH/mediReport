@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface PedidoCrudRepository extends CrudRepository<Pedido, Integer> {
+    List<Pedido> findByIdPaciente(String idPaciente);
 
-
-    Optional<List<Pedido>> findByIdPaciente(String idPaciente);
-
-    Optional<List<Pedido>> findByIdAsesor(String idAsesor);
+    List<Pedido> findByIdAsesor(String idAsesor);
 }
