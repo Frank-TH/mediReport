@@ -4,7 +4,6 @@ public class Patient {
 
     private String patientId;
     private String name;
-    private String password;
 
     public String getPatientId() {
         return patientId;
@@ -22,11 +21,4 @@ public class Patient {
         this.name = name;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
 }

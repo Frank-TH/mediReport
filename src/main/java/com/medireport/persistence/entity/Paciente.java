@@ -13,7 +13,6 @@ public class Paciente {
     @Id
     private String dni;
     private String nombre;
-    private String clave;
     @OneToMany(mappedBy = "paciente")
     private List<Pedido> pedidos;
 
@@ -31,14 +30,6 @@ public class Paciente {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
-    }
-
-    public String getClave() {
-        return clave;
-    }
-
-    public void setClave(String clave) {
-        this.clave = clave;
     }
 
     public List<Pedido> getPedidos() {

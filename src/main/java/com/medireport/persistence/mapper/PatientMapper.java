@@ -13,8 +13,7 @@ import java.util.List;
 public interface PatientMapper {
     @Mappings({
             @Mapping(source = "dni", target = "patientId"),
-            @Mapping(source = "nombre", target = "name"),
-            @Mapping(source = "clave", target = "password")
+            @Mapping(source = "nombre", target = "name")
     })
     Patient toPatient(Paciente paciente);
 
