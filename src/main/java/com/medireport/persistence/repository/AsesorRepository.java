@@ -1,4 +1,4 @@
-package com.medireport.persistence;
+package com.medireport.persistence.repository;
 
 import com.medireport.domain.Adviser;
 import com.medireport.domain.repository.AdviserRepository;
@@ -19,7 +19,6 @@ public class AsesorRepository implements AdviserRepository {
     @Autowired
     private AdviserMapper mapper;
 
-
     @Override
     public List<Adviser> getAll() {
         List<Asesor> asesores = (List<Asesor>) asesorCrudRepository.findAll();
@@ -31,14 +30,15 @@ public class AsesorRepository implements AdviserRepository {
         return asesorCrudRepository.findById(adviserId).map(asesor -> mapper.toAdviser(asesor));
     }
 
+
     @Override
-    public Adviser save(Adviser adviser) {
+    public Adviser newAdviser(Adviser adviser) {
         Asesor asesor = mapper.toAsesor(adviser);
         return mapper.toAdviser(asesorCrudRepository.save(asesor));
     }
 
     @Override
-    public void delete(String adviserId) {
+    public void deleteAdviser(String adviserId) {
         asesorCrudRepository.deleteById(adviserId);
     }
 }

@@ -9,7 +9,8 @@ import java.util.Optional;
 public interface ExamRepository {
 
     List<Exam> getAll();
+    Optional<List<Exam>> getScarceExams(int quatity);
     Optional<Exam> getExam(int examId);
-    Exam save(Exam exam);
+    Exam newExam(Exam exam);
     void delete (int examId);
 }

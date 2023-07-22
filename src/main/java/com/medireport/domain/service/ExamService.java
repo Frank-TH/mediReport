@@ -10,6 +10,7 @@ import java.util.Optional;
 
 @Service
 public class ExamService {
+
     @Autowired
     private ExamRepository examRepository;
 
@@ -17,12 +18,16 @@ public class ExamService {
         return examRepository.getAll();
     }
 
+    public Optional<List<Exam>> getScarceExams (int quantity){
+        return examRepository.getScarceExams(quantity);
+    }
+
     public Optional<Exam> getExam(int examId) {
         return examRepository.getExam(examId);
     }
 
     public Exam save(Exam exam) {
-        return examRepository.save(exam);
+        return examRepository.newExam(exam);
     }
 
     public boolean delete(int examId) {

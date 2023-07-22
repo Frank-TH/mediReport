@@ -12,6 +12,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/exams")
 public class ExamController {
+
     @Autowired
     private ExamService examService;
 
@@ -20,24 +21,31 @@ public class ExamController {
         return new ResponseEntity<>(examService.getAll(), HttpStatus.OK);
     }
 
+    @GetMapping("/stock/{quantity}")
+    public ResponseEntity<List<Exam>> getScarceExams(@PathVariable("quantity") int quantity) {
+        return examService.getScarceExams(quantity).
+                map(exams -> new ResponseEntity<>(exams, HttpStatus.OK)).
+                orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<Exam> getExam(@PathVariable("id") int examId) {
-        return examService.getExam(examId).
-                map(exam -> new ResponseEntity<>(exam, HttpStatus.OK)).
-                orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+        return examService.getExam(examId).map(exam -> new ResponseEntity<>(exam, HttpStatus.OK))
+                .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
     @PostMapping("/save")
     public ResponseEntity<Exam> save(@RequestBody Exam exam) {
-        return new ResponseEntity<>(examService.save(exam), HttpStatus.CREATED);
+        return new ResponseEntity<>(examService.save(exam), HttpStatus.OK);
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity delete(@PathVariable("id") int examId) {
+    public ResponseEntity<Exam> delete(@PathVariable("id") int examId) {
         if (examService.delete(examId)) {
-            return new ResponseEntity(HttpStatus.OK);
+            return new ResponseEntity<>(HttpStatus.OK);
         } else {
-            return new ResponseEntity(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>((HttpStatus.NOT_FOUND));
         }
     }
+
 }

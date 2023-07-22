@@ -3,29 +3,29 @@ package com.medireport.persistence.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "detalles")
-public class Detalle {
+@Table(name = "atenciones_examenes")
+public class AtencionExamen {
 
     @EmbeddedId
-    private DetallePK id;
+    private AtencionExamenPK id;
     private Double resultado;
     private String comentario;
 
     @ManyToOne
-    @MapsId("idPedido")
-    @JoinColumn(name = "id_pedido", insertable = false, updatable = false)
-    private Pedido pedido;
+    @MapsId("id")
+    @JoinColumn(name = "id_atencion", insertable = false, updatable = false)
+    private Atencion atencion;
 
     @ManyToOne
     @JoinColumn(name = "id_examen", insertable = false, updatable = false)
     private Examen examen;
 
 
-    public DetallePK getId() {
+    public AtencionExamenPK getId() {
         return id;
     }
 
-    public void setId(DetallePK id) {
+    public void setId(AtencionExamenPK id) {
         this.id = id;
     }
 
@@ -45,12 +45,12 @@ public class Detalle {
         this.comentario = comentario;
     }
 
-    public Pedido getPedido() {
-        return pedido;
+    public Atencion getAtencion() {
+        return atencion;
     }
 
-    public void setPedido(Pedido pedido) {
-        this.pedido = pedido;
+    public void setAtencion(Atencion atencion) {
+        this.atencion = atencion;
     }
 
     public Examen getExamen() {

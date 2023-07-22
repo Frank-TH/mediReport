@@ -1,22 +1,25 @@
 package com.medireport.persistence.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
 @Table(name = "asesores")
 public class Asesor {
-
     @Id
     private String dni;
-    private String nombre;
     private String clave;
+    private String nombres;
+    private String apellidos;
+    private String telefono;
+    private String correo;
+    @Column(name = "fecha_nacimiento")
+    private LocalDateTime fechaNacimiento;
+    private Boolean estado;
 
     @OneToMany(mappedBy = "asesor")
-    private List<Pedido> pedidos;
+    private List<Atencion> atenciones;
 
     public String getDni() {
         return dni;
@@ -24,14 +27,6 @@ public class Asesor {
 
     public void setDni(String dni) {
         this.dni = dni;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
     }
 
     public String getClave() {
@@ -42,11 +37,59 @@ public class Asesor {
         this.clave = clave;
     }
 
-    public List<Pedido> getPedidos() {
-        return pedidos;
+    public String getNombres() {
+        return nombres;
     }
 
-    public void setPedidos(List<Pedido> pedidos) {
-        this.pedidos = pedidos;
+    public void setNombres(String nombres) {
+        this.nombres = nombres;
+    }
+
+    public String getApellidos() {
+        return apellidos;
+    }
+
+    public void setApellidos(String apellidos) {
+        this.apellidos = apellidos;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+    public LocalDateTime getFechaNacimiento() {
+        return fechaNacimiento;
+    }
+
+    public void setFechaNacimiento(LocalDateTime fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
+    }
+
+    public Boolean getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Boolean estado) {
+        this.estado = estado;
+    }
+
+    public List<Atencion> getAtenciones() {
+        return atenciones;
+    }
+
+    public void setAtenciones(List<Atencion> atenciones) {
+        this.atenciones = atenciones;
     }
 }

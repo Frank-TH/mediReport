@@ -4,7 +4,8 @@ public class Exam {
 
     private int examId;
     private String name;
-    private  double cost;
+    private double cost;
+    private int stock;
 
     public int getExamId() {
         return examId;
@@ -28,5 +29,13 @@ public class Exam {
 
     public void setCost(double cost) {
         this.cost = cost;
+    }
+
+    public int getStock() {
+        return stock;
+    }
+
+    public void setStock(int stock) {
+        this.stock = stock;
     }
 }

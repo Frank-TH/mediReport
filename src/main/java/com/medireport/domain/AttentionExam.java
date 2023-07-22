@@ -1,16 +1,16 @@
 package com.medireport.domain;
 
-public class Detail {
-    private int examId;
+public class AttentionExam {
+    private int examenId;
     private double result;
     private String comment;
 
-    public int getExamId() {
-        return examId;
+    public int getExamenId() {
+        return examenId;
     }
 
-    public void setExamId(int examId) {
-        this.examId = examId;
+    public void setExamenId(int examenId) {
+        this.examenId = examenId;
     }
 
     public double getResult() {

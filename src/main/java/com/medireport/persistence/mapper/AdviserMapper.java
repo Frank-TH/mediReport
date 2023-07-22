@@ -11,18 +11,24 @@ import java.util.List;
 
 @Mapper(componentModel = "spring")
 public interface AdviserMapper {
-
     @Mappings({
-            @Mapping(source = "dni",target = "adviserId"),
-            @Mapping(source = "nombre",target = "name"),
-            @Mapping(source = "clave",target = "password")
+            @Mapping(source = "dni",target = "idAdviser"),
+            @Mapping(source = "nombres",target = "names"),
+            @Mapping(source = "apellidos",target = "lastname"),
+            @Mapping(source = "telefono",target = "phone"),
+            @Mapping(source = "correo",target = "email"),
+            @Mapping(source = "fechaNacimiento",target = "birthdate")
     })
-    Adviser toAdviser(Asesor asesor);
+    Adviser toAdviser (Asesor asesor);
 
     List<Adviser> toAdvisers(List<Asesor> asesores);
 
     @InheritInverseConfiguration
-    @Mapping(target = "pedidos",ignore = true)
+    @Mappings({
+            @Mapping(target = "clave",ignore = true),
+            @Mapping(target = "estado",ignore = true),
+            @Mapping(target = "atenciones",ignore = true),
+    })
     Asesor toAsesor(Adviser adviser);
 
 }
